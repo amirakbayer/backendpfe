@@ -17,6 +17,11 @@ const reclamationRoute = require('../backend/routes/reclamation.route')
 const fournisseurRoute = require('../backend/routes/fournisseur.route')
 const categorieRoute = require('../backend/routes/categorie.route')
 const sous_categorieRoute = require('../backend/routes/sous_categorie.route')
+const etatRoute = require('../backend/routes/etat.route')
+const roleRoute = require('../backend/routes/role.route')
+const type_fichierRoute = require('../backend/routes/type_fichier.route')
+const lieuRoute = require('../backend/routes/lieu.route')
+const utilisateurRoute = require('../backend/routes/utilisateur.route')
 const app = express()
 app.use(bodyParser.json())
 app.use(
@@ -31,6 +36,11 @@ app.use('/rec', reclamationRoute)
 app.use('/fournisseur', fournisseurRoute)
 app.use('/categorie', categorieRoute)
 app.use('/sous_categorie', sous_categorieRoute)
+app.use('/etat', etatRoute)
+app.use('/role', roleRoute)
+app.use('/type_fichier', type_fichierRoute)
+app.use('/lieu', lieuRoute)
+app.use('/utilisateur', utilisateurRoute)
 // Create port
 const port = process.env.PORT || 4000
 const server = app.listen(port, () => {
