@@ -14,6 +14,9 @@ mongoose
   })
 // Setting up port with express js
 const reclamationRoute = require('../backend/routes/reclamation.route')
+const fournisseurRoute = require('../backend/routes/fournisseur.route')
+const categorieRoute = require('../backend/routes/categorie.route')
+const sous_categorieRoute = require('../backend/routes/sous_categorie.route')
 const app = express()
 app.use(bodyParser.json())
 app.use(
@@ -25,6 +28,9 @@ app.use(cors())
 app.use(express.static(path.join(__dirname, 'dist/PFE')))
 app.use('/', express.static(path.join(__dirname, 'dist/PFE')))
 app.use('/rec', reclamationRoute)
+app.use('/fournisseur', fournisseurRoute)
+app.use('/categorie', categorieRoute)
+app.use('/sous_categorie', sous_categorieRoute)
 // Create port
 const port = process.env.PORT || 4000
 const server = app.listen(port, () => {
