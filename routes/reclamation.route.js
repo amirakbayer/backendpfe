@@ -38,10 +38,8 @@ reclamationRoute.route('/readRec/:id').get((req, res) => {
 reclamationRoute.route('/readOwnRecs/:id').get((req, res) => {
   reclamation.find({id_reclamant: req.params.id}, (error, data) => {
     if (error) {
-      console.log('backend error', error);
       return next(error)
     } else {
-      console.log('backend data',data);
       res.json(data)
       
     }
@@ -51,10 +49,8 @@ reclamationRoute.route('/readOwnRecs/:id').get((req, res) => {
 reclamationRoute.route('/readAffRecs/:id').get((req, res) => {
   reclamation.find({id_affect: req.params.id}, (error, data) => {
     if (error) {
-      console.log('backend error', error);
       return next(error)
     } else {
-      console.log('backend data',data);
       res.json(data)
       
     }
