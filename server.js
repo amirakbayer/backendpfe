@@ -3,6 +3,7 @@ const path = require('path')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const bodyParser = require('body-parser')
+global.__basedir = __dirname; 
 // Connecting with mongo db
 mongoose
   .connect('mongodb://127.0.0.1:27017/mydatabase')
@@ -22,6 +23,7 @@ const roleRoute = require('../backend/routes/role.route')
 const type_fichierRoute = require('../backend/routes/type_fichier.route')
 const lieuRoute = require('../backend/routes/lieu.route')
 const utilisateurRoute = require('../backend/routes/utilisateur.route')
+const initRoutes = require("../backend/routesF");
 const app = express()
 app.use(bodyParser.json())
 app.use(
@@ -41,6 +43,9 @@ app.use('/role', roleRoute)
 app.use('/type_fichier', type_fichierRoute)
 app.use('/lieu', lieuRoute)
 app.use('/utilisateur', utilisateurRoute)
+
+initRoutes(app);
+
 // Create port
 const port = process.env.PORT || 4000
 const server = app.listen(port, () => {
