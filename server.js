@@ -23,6 +23,8 @@ const roleRoute = require('../backend/routes/role.route')
 const type_fichierRoute = require('../backend/routes/type_fichier.route')
 const lieuRoute = require('../backend/routes/lieu.route')
 const utilisateurRoute = require('../backend/routes/utilisateur.route')
+const fichierRoute = require('../backend/routes/fichier.route')
+const mise_a_jourRoute = require('../backend/routes/mise_a_jour.route')
 const initRoutes = require("../backend/routesF");
 const app = express()
 app.use(bodyParser.json())
@@ -43,6 +45,8 @@ app.use('/role', roleRoute)
 app.use('/type_fichier', type_fichierRoute)
 app.use('/lieu', lieuRoute)
 app.use('/utilisateur', utilisateurRoute)
+app.use('/fichier', fichierRoute)
+app.use('/mise_a_jour', mise_a_jourRoute)
 
 initRoutes(app);
 

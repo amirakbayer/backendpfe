@@ -4,6 +4,7 @@ const baseUrl = "http://localhost:4000/files/";
 
 const upload = async (req, res) => {
   try {
+      console.log("received file", req.file);
     await uploadFile(req, res);
 
     if (req.file == undefined) {
@@ -16,7 +17,7 @@ const upload = async (req, res) => {
   } catch (err) {
     console.log(err);
 
-    if (err.code == "LIMIT_FILE_SIZE") {
+    if (err.code == "LIMIT_UNEXPECTED_FILE") {
       return res.status(500).send({
         message: "File size cannot be larger than 2MB!",
       });
