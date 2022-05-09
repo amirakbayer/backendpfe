@@ -13,7 +13,10 @@ mongoose
     console.error('Error connecting to mongo', err.reason)
   })
 // Setting up port with express js
-const reclamationRoute = require('../backend/routes/reclamation.route')
+const reclamationRoute = require('../backendpfe/routes/reclamation.route')
+const fournisseurRoute = require('../backendpfe/routes/fournisseur.route')
+const categorieRoute = require('../backendpfe/routes/categorie.route')
+const sous_categorieRoute = require('../backendpfe/routes/sous_categorie.route')
 const app = express()
 app.use(bodyParser.json())
 app.use(
@@ -22,9 +25,12 @@ app.use(
   }),
 )
 app.use(cors())
-app.use(express.static(path.join(__dirname, 'dist/PFE')))
-app.use('/', express.static(path.join(__dirname, 'dist/PFE')))
+app.use(express.static(path.join(__dirname, 'dist/pfe')))
+app.use('/', express.static(path.join(__dirname, 'dist/pfe')))
 app.use('/rec', reclamationRoute)
+app.use('/fournisseur', fournisseurRoute)
+app.use('/categorie', categorieRoute)
+app.use('/sous_categorie', sous_categorieRoute)
 // Create port
 const port = process.env.PORT || 4000
 const server = app.listen(port, () => {
