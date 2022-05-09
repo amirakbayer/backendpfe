@@ -3,6 +3,7 @@ const path = require('path')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const bodyParser = require('body-parser')
+global.__basedir = __dirname; 
 // Connecting with mongo db
 mongoose
   .connect('mongodb://127.0.0.1:27017/mydatabase')
@@ -13,10 +14,16 @@ mongoose
     console.error('Error connecting to mongo', err.reason)
   })
 // Setting up port with express js
-const reclamationRoute = require('../backendpfe/routes/reclamation.route')
-const fournisseurRoute = require('../backendpfe/routes/fournisseur.route')
-const categorieRoute = require('../backendpfe/routes/categorie.route')
-const sous_categorieRoute = require('../backendpfe/routes/sous_categorie.route')
+const reclamationRoute = require('../backend/routes/reclamation.route')
+const fournisseurRoute = require('../backend/routes/fournisseur.route')
+const categorieRoute = require('../backend/routes/categorie.route')
+const sous_categorieRoute = require('../backend/routes/sous_categorie.route')
+const etatRoute = require('../backend/routes/etat.route')
+const roleRoute = require('../backend/routes/role.route')
+const type_fichierRoute = require('../backend/routes/type_fichier.route')
+const lieuRoute = require('../backend/routes/lieu.route')
+const utilisateurRoute = require('../backend/routes/utilisateur.route')
+const initRoutes = require("../backend/routesF");
 const app = express()
 app.use(bodyParser.json())
 app.use(
@@ -31,6 +38,14 @@ app.use('/rec', reclamationRoute)
 app.use('/fournisseur', fournisseurRoute)
 app.use('/categorie', categorieRoute)
 app.use('/sous_categorie', sous_categorieRoute)
+app.use('/etat', etatRoute)
+app.use('/role', roleRoute)
+app.use('/type_fichier', type_fichierRoute)
+app.use('/lieu', lieuRoute)
+app.use('/utilisateur', utilisateurRoute)
+
+initRoutes(app);
+
 // Create port
 const port = process.env.PORT || 4000
 const server = app.listen(port, () => {
