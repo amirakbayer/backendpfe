@@ -40,7 +40,19 @@ utilisateurRoute.route('/readAss/:id').get((req, res) => {
 })
 
 // Update employee
-
+utilisateurRoute.route('/updateUser/:id').put((req, res, next) => {
+  utilisateur.findByIdAndUpdate(req.params.id, {
+    $set: req.body
+  }, (error, data) => {
+    if (error) {
+      return next(error);
+      console.log(error)
+    } else {
+      res.json(data)
+      console.log('Data updated successfully')
+    }
+  })
+})
 // Delete employee
 
 module.exports = utilisateurRoute;

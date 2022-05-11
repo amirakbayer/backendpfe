@@ -14,5 +14,17 @@ mise_a_jourRoute.route('/saveUpdate').post((req, res, next) => {
   })
 });
 
+mise_a_jourRoute.route('/readUpdate/:id').get((req, res) => {
+    
+  mise_a_jour.find({id_rec: req.params.id}, (error, data) => {
+    if (error) {
+      return next(error)
+    } else {
+      res.json(data)
+      
+    }
+  })
+})
+
 
 module.exports = mise_a_jourRoute;

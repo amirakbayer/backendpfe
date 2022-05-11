@@ -24,6 +24,17 @@ fichierRoute.route('/').get((req, res) => {
   })
 })
 
+fichierRoute.route('/readFichierByID/:id').get((req, res) => {
+    
+  fichier.findById(req.params.id, (error, data) => {
+    if (error) {
+      return next(error)
+    } else {
+      res.json(data)
+      
+    }
+  })
+})
 
 fichierRoute.route('/readFichier/:nom').get((req, res) => {
     
