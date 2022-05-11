@@ -14,16 +14,18 @@ mongoose
     console.error('Error connecting to mongo', err.reason)
   })
 // Setting up port with express js
-const reclamationRoute = require('../backendpfe/routes/reclamation.route')
-const fournisseurRoute = require('../backendpfe/routes/fournisseur.route')
-const categorieRoute = require('../backendpfe/routes/categorie.route')
-const sous_categorieRoute = require('../backendpfe/routes/sous_categorie.route')
-const etatRoute = require('../backendpfe/routes/etat.route')
-const roleRoute = require('../backendpfe/routes/role.route')
-const type_fichierRoute = require('../backendpfe/routes/type_fichier.route')
-const lieuRoute = require('../backendpfe/routes/lieu.route')
-const utilisateurRoute = require('../backendpfe/routes/utilisateur.route')
-const initRoutes = require("../backendpfe/routesF");
+const reclamationRoute = require('../backend/routes/reclamation.route')
+const fournisseurRoute = require('../backend/routes/fournisseur.route')
+const categorieRoute = require('../backend/routes/categorie.route')
+const sous_categorieRoute = require('../backend/routes/sous_categorie.route')
+const etatRoute = require('../backend/routes/etat.route')
+const roleRoute = require('../backend/routes/role.route')
+const type_fichierRoute = require('../backend/routes/type_fichier.route')
+const lieuRoute = require('../backend/routes/lieu.route')
+const utilisateurRoute = require('../backend/routes/utilisateur.route')
+const fichierRoute = require('../backend/routes/fichier.route')
+const mise_a_jourRoute = require('../backend/routes/mise_a_jour.route')
+const initRoutes = require("../backend/routesF");
 const app = express()
 app.use(bodyParser.json())
 app.use(
@@ -43,6 +45,8 @@ app.use('/role', roleRoute)
 app.use('/type_fichier', type_fichierRoute)
 app.use('/lieu', lieuRoute)
 app.use('/utilisateur', utilisateurRoute)
+app.use('/fichier', fichierRoute)
+app.use('/mise_a_jour', mise_a_jourRoute)
 
 initRoutes(app);
 
