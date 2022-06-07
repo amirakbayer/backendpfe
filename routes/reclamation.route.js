@@ -73,12 +73,14 @@ reclamationRoute.route('/updateRec/:id').put((req, res, next) => {
 })
 // Delete employee
 reclamationRoute.route('/deleteRec/:id').delete((req, res, next) => {
-  reclamation.findOneAndRemove(req.params.id, (error, data) => {
+  reclamation.findOneAndDelete({_id: req.params.id}, (error, data) => {
     if (error) {
       return next(error);
     } else {
+      console.log("rec is deleted ", req.params.id);
       res.status(200).json({
         msg: data
+        
       })
     }
   })

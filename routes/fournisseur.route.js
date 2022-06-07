@@ -50,7 +50,7 @@ fournisseurRoute.route('/updateFour/:id').put((req, res, next) => {
 })
 // Delete employee
 fournisseurRoute.route('/deleteFour/:id').delete((req, res, next) => {
-  fournisseur.findOneAndRemove(req.params.id, (error, data) => {
+  fournisseur.findOneAndDelete({_id: req.params.id}, (error, data) => {
     if (error) {
       return next(error);
     } else {
